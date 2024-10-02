@@ -9,7 +9,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:3000/register', {
+    const response = await fetch('https://regassign-backend.onrender.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
