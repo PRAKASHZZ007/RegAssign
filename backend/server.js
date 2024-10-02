@@ -15,7 +15,7 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Connect to MongoDB (hardcoded credentials)
-mongoose.connect('mongodb+srv://<username>:<password>@cluster0.mongodb.net/userAddressDB?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost:27017/userAddressDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
