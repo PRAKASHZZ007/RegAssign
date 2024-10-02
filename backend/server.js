@@ -3,21 +3,18 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const User = require('./models/User'); // Ensure you have this model defined
-const Address = require('./models/Address'); // Ensure you have this model defined
+const User = require('./models/User');
+const Address = require('./models/Address');
 
 const app = express();
-const port = process.env.PORT || 3000; // Use environment port or fallback to 3000
+const port = 3000;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/userAddressDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect('mongodb://localhost:27017/userAddressDB')
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -41,8 +38,7 @@ app.post('/register', async (req, res) => {
 
     res.status(201).json({ message: 'User and address registered successfully' });
   } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).json({ message: 'Error registering user and address', error: error.message });
+    res.status(500).json({ message: 'Error registering user and address', error });
   }
 });
 
